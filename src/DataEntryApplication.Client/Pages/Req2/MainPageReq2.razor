@@ -1,0 +1,31 @@
+﻿@page "/req2"
+@inject ILocalStorageService localStorage
+@inject NavigationManager NavigationManager
+
+<AuthorizeView>
+	<Authorized>
+		<div class="text-center">
+			Main Page
+		</div>
+		<div class="wrapper">
+			<div class="sidebar">
+				<NavReq2/>
+			</div>
+			<div class="p-3">
+				<h4>Hello</h4>
+			</div>
+		</div>
+	</Authorized>
+</AuthorizeView>
+
+@code {
+	protected override async Task OnInitializedAsync()
+	{
+		var auth = await localStorage.GetItemAsync<string>("authToken");
+		
+		if (string.IsNullOrWhiteSpace(auth))
+		{
+			NavigationManager.NavigateTo("/req2/login");
+		}
+	}
+}

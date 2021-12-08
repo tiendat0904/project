@@ -1,0 +1,41 @@
+﻿@inject ILocalStorageService localStorage
+<div class="navbar-collapse" @onclick="ToggleNavMenu">
+	<ul class="nav flex-row">
+		<li class="nav-item">
+			<NavLink class="nav-link disabled" href="req1">
+				Req1
+			</NavLink>
+		</li>
+		<li class="nav-item">
+			<NavLink class="nav-link" href="req2" Match="NavLinkMatch.Prefix">
+				Req2
+			</NavLink>
+		</li>
+		<li class="nav-item">
+			<NavLink class="nav-link disabled" href="fetchdata">
+				Req3
+			</NavLink>
+		</li>
+		<li class="nav-item">
+			<NavLink class="nav-link disabled" href="fetchdata">
+				Req4
+			</NavLink>
+		</li>
+		<li class="nav-item">
+			<NavLink class="nav-link disabled" href="fetchdata">
+				Req5
+			</NavLink>
+		</li>
+	</ul>
+</div>
+
+@code {
+	private bool collapseNavMenu = false;
+
+	private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+	private void ToggleNavMenu()
+	{
+		collapseNavMenu = !collapseNavMenu;
+	}
+}
